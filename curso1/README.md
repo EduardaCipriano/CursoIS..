@@ -34,11 +34,11 @@ Depois de criar o Dockerfile, você pode construir a imagem Docker usando o coma
 
 O comando para construir a imagem seria:
 
-    **docker build -t nome-da-imagem:tag.**
+    docker build -t nome-da-imagem:tag.
 
-    -t nome-da-imagem:tag : Aqui você define o nome da imagem e uma tag opcional (que pode ser uma versão ou identificador).
-    
-    O ponto . no final especifica que o Dockerfile e os arquivos necessários estão no diretório atual.
+**-t nome-da-imagem:tag** : Aqui você define o nome da imagem e uma tag opcional (que pode ser uma versão ou identificador).
+
+O ponto **.** no final especifica que o Dockerfile e os arquivos necessários estão no diretório atual.
 
 
 
