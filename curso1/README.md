@@ -32,16 +32,6 @@ Em resumo, as **imagens Docker** são a "fórmula" ou "modelo" de um container e
 
 Depois de criar o Dockerfile, você pode construir a imagem Docker usando o comando docker build. Este comando precisa ser executado no diretório onde o Dockerfile está localizado.
 
-O comando para construir a imagem seria:
-
-    docker build -t nome-da-imagem:tag.
-
-**-t nome-da-imagem:tag** : Aqui você define o nome da imagem e uma tag opcional (que pode ser uma versão ou identificador).
-
-O ponto **.** no final especifica que o Dockerfile e os arquivos necessários estão no diretório atual.
-
-
-
 ### Image
 
 - Requirements: flask==2.0.1
