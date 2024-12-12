@@ -2,26 +2,44 @@
 
 ## O que são containers?
 
-Container é o nome dado para a segregação de processos no mesmo kernel, de forma que o processo
-seja isolado o máximo possível de todo o resto do ambiente.
-Em termos práticos são File Systems, criados a partir de uma "imagem" e que podem possuir
-também algumas características próprias.
+Containers são unidades leves e portáteis de software que empacotam uma aplicação e todas as suas dependências, bibliotecas e configurações necessárias para sua execução, tornando-a independente do ambiente em que é executada. Isso permite que a aplicação seja executada de maneira consistente em diferentes sistemas, seja no ambiente de desenvolvimento, produção ou em servidores na nuvem.
+
+Containers são executados sobre um sistema operacional comum, mas utilizam tecnologias como o **Docker** (um dos mais populares) ou **Kubernetes** para gerenciar e orquestrar múltiplos containers. Eles são mais eficientes do que máquinas virtuais, pois não exigem um sistema operacional completo para cada instância, o que reduz o consumo de recursos.
+
+A principal vantagem dos containers é a sua capacidade de **isolamento**, ou seja, cada container opera de forma independente, sem afetar o desempenho ou funcionamento dos outros containers. Isso torna os containers ideais para desenvolvimento, testes, implementação e escalabilidade de aplicações.
 
 ## O que são imagens Docker ?
 
-Uma imagem Docker é a materialização de um modelo de um sistema de arquivos, modelo este
-produzido através de um processo chamado build.
-Esta imagem é representada por um ou mais arquivos e pode ser armazenada em um repositório.
+Uma **imagem Docker** é um arquivo de leitura apenas (somente leitura) que contém tudo o que uma aplicação precisa para ser executada em um container. Isso inclui:
+
+- **O sistema operacional base** (como uma versão do Linux ou uma versão minimalista do Linux)
+- **Bibliotecas** e **dependências** necessárias
+- **Códigos** da aplicação
+- **Arquivos de configuração**
+
+As imagens Docker são criadas a partir de um **Dockerfile**, que é um arquivo de texto que contém uma série de instruções que definem como a imagem será construída. Cada linha no Dockerfile especifica uma operação a ser realizada, como instalar pacotes, copiar arquivos ou expor portas de rede.
+
+Uma imagem Docker é a base de um container. Quando você executa um container a partir de uma imagem, o Docker cria uma instância dessa imagem e a coloca em execução. O container é um ambiente isolado onde a aplicação funciona, e pode ser iniciado, pausado ou removido, mas a imagem em si permanece inalterada.
+
+### Características das imagens Docker:
+- **Imutabilidade**: As imagens são imutáveis. Uma vez criadas, elas não podem ser alteradas, mas podem ser versionadas e novas imagens podem ser criadas a partir de versões anteriores.
+- **Portabilidade**: Como elas contêm todas as dependências necessárias, podem ser executadas em qualquer ambiente Docker compatível, seja localmente ou em nuvens.
+- **Camadas**: As imagens são compostas por camadas, onde cada instrução no Dockerfile cria uma camada. Essas camadas são reutilizáveis, o que torna o processo de criação de imagens mais eficiente.
+
+Em resumo, as **imagens Docker** são a "fórmula" ou "modelo" de um container e garantem que a aplicação seja executada de maneira consistente em qualquer ambiente.
 
 ## Construção de uma imagem
 
-Processo para gerar uma nova imagem a partir de um arquivo de instruções. O comando docker
-build é o responsável por ler um Dockerfile e produzir uma nova imagem Docker.
+Depois de criar o Dockerfile, você pode construir a imagem Docker usando o comando docker build. Este comando precisa ser executado no diretório onde o Dockerfile está localizado.
 
-## Exemplo
+O comando para construir a imagem seria:
 
-Aplicação: Um servidor em flask que exibe o texto "Bem vindo ao curso do IS" [ao clicar aqui](http://127.0.0.1:8080/Boas-vindas).
-A aplicação completa encontra-se no diretório /exemplo.
+docker build -t nome-da-imagem:tag .
+
+    -t nome-da-imagem:tag : Aqui você define o nome da imagem e uma tag opcional (que pode ser uma versão ou identificador).
+    O ponto . no final especifica que o Dockerfile e os arquivos necessários estão no diretório atual.
+
+
 
 ### Image
 
