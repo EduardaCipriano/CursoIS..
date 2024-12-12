@@ -50,8 +50,3 @@ docker build --tag=flaskboasvindas .
 sudo docker run -it --rm --name flaskboasvindasContainer -p 8080:8000 flaskboasvindas python3 serverFlask.py
 ```
 
-## Outros repositórios
-
-- [Exemplo do luiz](https://github.com/luizcarloscf/docker-basic)
-- [Trabalho final da disciplina laboratorio de redes](https://github.com/matheusdutra0207/MonitoringLabRedes)
-- [Google](https://cloud.google.com/containers)
