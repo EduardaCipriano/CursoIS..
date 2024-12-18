@@ -1,10 +1,12 @@
 # is-wire
-- [Laboratório de Visão Computacional e Robótica - LabVISIO](https://github.com/labviros)
 - [is-wire](https://github.com/labviros/is-wire-py)
 
 ## Publish
 
 ### Connect to the broker
+
+Connect to the broker (ou "Conectar ao broker") é o processo de estabelecer uma conexão entre um cliente (dispositivo, serviço ou aplicação) e um broker, que é um intermediário responsável por gerenciar e distribuir mensagens em sistemas de comunicação. Esse conceito é amplamente utilizado em arquiteturas de mensageria, como o MQTT (Message Queuing Telemetry Transport), RabbitMQ, Kafka, entre outros.
+O broker atua como o ponto central de um sistema de mensagens, facilitando a comunicação entre diferentes partes (publicadores e assinantes). Ele recebe mensagens de clientes que publicam dados (publishers) e as entrega para clientes que assinam tópicos específicos (subscribers). Além disso, ele pode oferecer funcionalidades como persistência, confiabilidade e ordenação na entrega das mensagens, dependendo da tecnologia utilizada.
 
 ```
 channel = Channel("amqp://guest:guest@localhost:5672")
@@ -12,6 +14,9 @@ channel = Channel("amqp://guest:guest@localhost:5672")
 A variável channel inicializa uma conexão amqp no endereço da url passada e declara uma exchange("is") do tipo “topic”.
 
 ### Broadcast message to anyone interested (subscribed)
+
+Broadcast message to anyone interested (subscribed), traduzido como "Transmitir mensagem para qualquer pessoa interessada (inscrita)", refere-se ao processo de envio de uma mensagem para todos os clientes ou sistemas que demonstraram interesse em recebê-la, geralmente por meio de inscrição (ou assinatura) em um tópico ou canal específico. Esse conceito é central em sistemas baseados na arquitetura publish/subscribe (publicação/assinatura), como MQTT, RabbitMQ ou Kafka.
+
 ```
 channel.publish(message, topic="MyTopic.SubTopic")
 ```
@@ -20,11 +25,19 @@ O método “publish” irá publicar uma mensagem no tópico informado, ou seja
 ## Sub
 
 ### Connect to the broker
+
+
+Connect to the broker (ou "Conectar ao broker") é o processo de estabelecer uma conexão entre um cliente (dispositivo, serviço ou aplicação) e um broker, que é um intermediário responsável por gerenciar e distribuir mensagens em sistemas de comunicação. Esse conceito é amplamente utilizado em arquiteturas de mensageria, como o MQTT (Message Queuing Telemetry Transport), RabbitMQ, Kafka, entre outros.
+O broker atua como o ponto central de um sistema de mensagens, facilitando a comunicação entre diferentes partes (publicadores e assinantes). Ele recebe mensagens de clientes que publicam dados (publishers) e as entrega para clientes que assinam tópicos específicos (subscribers). Além disso, ele pode oferecer funcionalidades como persistência, confiabilidade e ordenação na entrega das mensagens, dependendo da tecnologia utilizada.
+
 ```
 channel = Channel("amqp://guest:guest@localhost:5672")
 ```
 
 ### Subscribe to the desired topic(s)
+
+"subscribe to the desired topic(s)" é a ação de se inscrever em tópicos específicos em um sistema de mensagens para receber apenas as informações relevantes para o cliente. Essa abordagem é fundamental em arquiteturas publish/subscribe pela sua eficiência e organização.
+
 ```
 subscription = Subscription(channel)
 ```
@@ -35,6 +48,9 @@ subscription.subscribe(topic="MyTopic.SubTopic")
 Acima, no método "subscribe",  faz-se  o processo de bind da fila com a exchange "is". Desse modo, tudo que for publicado na exchange "is" no tópico “MyTopic.SubTopic”  será encaminhado para essa fila.
 
 ### Blocks forever waiting for one message from any subscription
+
+blocks forever waiting for one message from any subscription" descreve o comportamento de um cliente que permanece em espera ativa, sem realizar outras ações, até que receba uma mensagem de um dos tópicos ou assinaturas de interesse. Esse padrão é útil em cenários onde mensagens são críticas para o próximo passo no fluxo de trabalho, mas requer cuidado para evitar bloqueios indesejados ou ineficiência.
+
 ```
 message = channel.consume()
 print(message)
