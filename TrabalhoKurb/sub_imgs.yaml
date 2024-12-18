@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: sub-imgs
-        image: juniorgui/aula-is:v11
+        image: eduarda/cursoIS:v11
         envFrom:
         - configMapRef:
             name: sub-imgs-configmap
