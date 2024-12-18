@@ -4,7 +4,7 @@ O cursoIs é uso gerenciado durante a aula de espaço inteligente, com o objetid
 nosso comando principal para executar os aquivos é 
 
 
-(python3 nomedoarquivo)
+(python3 "nomedoarquivo")
 
 
 tenha isso em mente enquanto estiver executando os arquivos.
